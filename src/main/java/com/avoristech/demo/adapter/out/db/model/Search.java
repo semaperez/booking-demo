@@ -1,6 +1,4 @@
-package com.avoristech.demo.adapter.out.db.documents;
-
-import jakarta.persistence.Id;
+package com.avoristech.demo.adapter.out.db.model;
 
 import java.time.LocalDate;
 import java.util.List;

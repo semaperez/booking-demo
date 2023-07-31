@@ -1,4 +1,4 @@
-package com.avoristech.demo.adapter.out.db.documents;
+package com.avoristech.demo.adapter.out.db.model;
 
 import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
