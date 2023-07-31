@@ -8,4 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface JpaAccessLogCountRepository extends MongoRepository<AccessLogCountDocument, String> {
+    List<AccessLogCountDocument> findBySearch(Search search);
+
+    Optional<AccessLogCountDocument> findBySearchId(String searchId);
 }
