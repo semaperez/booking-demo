@@ -1,9 +1,9 @@
 package com.booking.demo.application.dto;
 
 public class AvailabilitySearchDto {
-    private String searchId;
-    private SearchDto search;
-    private Integer count;
+    private final String searchId;
+    private final SearchDto search;
+    private final Integer count;
     public AvailabilitySearchDto(String searchId, SearchDto search, Integer count) {
         this.searchId = searchId;
         this.search = search;

@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class SearchDto {
-    private String hotelId;
-    private LocalDate checkIn;
-    private LocalDate checkOut;
+    private final String hotelId;
+    private final LocalDate checkIn;
+    private final LocalDate checkOut;
     private List<Integer> ages;
     public SearchDto(String hotelId, LocalDate checkIn, LocalDate checkOut, List<Integer> ages) {
         this.hotelId = hotelId;

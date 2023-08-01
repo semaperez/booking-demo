@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AvailabilitySearchController implements AvailabilitySearchApiPort {
-    private AvailabilitySearchUseCases availabilitySearchUseCases;
+    private final AvailabilitySearchUseCases availabilitySearchUseCases;
 
     public AvailabilitySearchController(AvailabilitySearchUseCases availabilitySearchUseCases) {
         this.availabilitySearchUseCases = availabilitySearchUseCases;

@@ -3,5 +3,9 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/bookingdb
 kafka:
+  server: localhost:9092
   topic:
     availabilitysearch: hotel_availability_searches
+  consumer:
+    poolTime: 100
+    groupId: booking

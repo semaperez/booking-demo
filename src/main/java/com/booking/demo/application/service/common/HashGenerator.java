@@ -1,9 +1,6 @@
 package com.booking.demo.application.service.common;
 
-import com.booking.demo.application.exception.BookingJsonProcessingException;
 import com.booking.demo.application.exception.BookingNoSuchAlgorithmException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 import java.security.MessageDigest;
@@ -11,19 +8,12 @@ import java.security.NoSuchAlgorithmException;
 
 @Component
 public class HashGenerator {
-    private ObjectMapper objectMapper;
-
-    public HashGenerator(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+    private final JsonConverter jsonConverter;
+    public HashGenerator(JsonConverter jsonConverter) {
+        this.jsonConverter = jsonConverter;
     }
-
     public String generateHashFromObject(Object object) {
-
-        try {
-            return generateHashFromJson(objectMapper.writeValueAsString(object));
-        } catch (JsonProcessingException e) {
-            throw new BookingJsonProcessingException(e);
-        }
+        return generateHashFromJson(jsonConverter.convertToJson(object));
     }
 
     private String generateHashFromJson(String json){

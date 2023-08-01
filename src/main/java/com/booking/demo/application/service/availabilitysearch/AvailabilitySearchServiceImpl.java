@@ -9,6 +9,7 @@ import com.booking.demo.application.dto.SearchIdResponseDto;
 import com.booking.demo.application.service.availabilitysearch.mapper.AvailabilitySearchMapper;
 import com.booking.demo.application.service.availabilitysearch.mapper.SearchMapper;
 import com.booking.demo.application.service.common.HashGenerator;
+import com.booking.demo.port.out.messaging.AvailabilitySearchProducerPort;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -16,17 +17,21 @@ import java.util.Optional;
 
 @Service
 public class AvailabilitySearchServiceImpl implements AvailabilitySearchUseCases {
-    private JpaAvailabilitySearchRepository jpaAvailabilitySearchRepository;
-    private AvailabilitySearchMapper availabilitySearchMapper;
-    private SearchMapper searchMapper;
-    private HashGenerator hashGenerator;
+    private final JpaAvailabilitySearchRepository jpaAvailabilitySearchRepository;
+    private final AvailabilitySearchMapper availabilitySearchMapper;
+    private final SearchMapper searchMapper;
+    private final HashGenerator hashGenerator;
+    private final AvailabilitySearchProducerPort availabilitySearchProducerPort;
 
-    public AvailabilitySearchServiceImpl(JpaAvailabilitySearchRepository jpaAvailabilitySearchRepository, AvailabilitySearchMapper availabilitySearchMapper, SearchMapper searchMapper
+    public AvailabilitySearchServiceImpl(JpaAvailabilitySearchRepository jpaAvailabilitySearchRepository,
+                                         AvailabilitySearchMapper availabilitySearchMapper, SearchMapper searchMapper,
+                                         AvailabilitySearchProducerPort availabilitySearchProducerPort
             , HashGenerator hashGenerator) {
         this.jpaAvailabilitySearchRepository = jpaAvailabilitySearchRepository;
         this.availabilitySearchMapper = availabilitySearchMapper;
         this.searchMapper = searchMapper;
         this.hashGenerator = hashGenerator;
+        this.availabilitySearchProducerPort = availabilitySearchProducerPort;
     }
 
     @Override
@@ -37,7 +42,14 @@ public class AvailabilitySearchServiceImpl implements AvailabilitySearchUseCases
     @Override
     public SearchIdResponseDto registerSearch(SearchDto searchDto) {
         Search search = searchMapper.toDocument(searchDto);
+        availabilitySearchProducerPort.publish(searchDto);
+        String hash = hashGenerator.generateHashFromObject(search);
+        return new SearchIdResponseDto(hash);
+    }
 
+    @Override
+    public void persistSearch(SearchDto searchDto) {
+        Search search = searchMapper.toDocument(searchDto);
         String hash = hashGenerator.generateHashFromObject(search);
 
         AvailabilitySearchDocument availabilitySearchDocument =
@@ -46,8 +58,5 @@ public class AvailabilitySearchServiceImpl implements AvailabilitySearchUseCases
         availabilitySearchDocument.setSearch(search);
         availabilitySearchDocument.setCount(Objects.requireNonNullElse(availabilitySearchDocument.getCount(),0)+1);
         jpaAvailabilitySearchRepository.save(availabilitySearchDocument);
-
-        return new SearchIdResponseDto(hash);
     }
-
 }

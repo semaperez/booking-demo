@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface AvailabilitySearchUseCases {
     Optional<AvailabilitySearchDto> getBySearchId(String searchId);
     SearchIdResponseDto registerSearch(SearchDto searchDto);
+    void persistSearch(SearchDto searchDto);
 }
