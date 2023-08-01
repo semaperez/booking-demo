@@ -1,7 +1,7 @@
 package com.booking.demo.application.service.common;
 
-import com.booking.demo.application.exception.AvorisJsonProcessingException;
-import com.booking.demo.application.exception.AvorisNoSuchAlgorithmException;
+import com.booking.demo.application.exception.BookingJsonProcessingException;
+import com.booking.demo.application.exception.BookingNoSuchAlgorithmException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class HashGenerator {
         try {
             return generateHashFromJson(objectMapper.writeValueAsString(object));
         } catch (JsonProcessingException e) {
-            throw new AvorisJsonProcessingException(e);
+            throw new BookingJsonProcessingException(e);
         }
     }
 
@@ -33,7 +33,7 @@ public class HashGenerator {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
-            throw new AvorisNoSuchAlgorithmException(e);
+            throw new BookingNoSuchAlgorithmException(e);
         }
 
         byte[] hashBytes = md.digest(jsonData);

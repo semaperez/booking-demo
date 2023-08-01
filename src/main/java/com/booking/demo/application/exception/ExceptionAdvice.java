@@ -27,14 +27,14 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(buildError(request, "Validation error: " + e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(AvorisJsonProcessingException.class)
-    public ResponseEntity<ErrorDto> handleAvorisJsonProcessingException(HttpServletRequest request, AvorisJsonProcessingException e) {
+    @ExceptionHandler(BookingJsonProcessingException.class)
+    public ResponseEntity<ErrorDto> handleBookingJsonProcessingException(HttpServletRequest request, BookingJsonProcessingException e) {
         return new ResponseEntity<>(buildError(request, "Error during Jackson writeValueAsString: " + e.getMessage()),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(AvorisNoSuchAlgorithmException.class)
-    public ResponseEntity<ErrorDto> handleAvorisNoSuchAlgorithmException(HttpServletRequest request, AvorisNoSuchAlgorithmException e) {
+    @ExceptionHandler(BookingNoSuchAlgorithmException.class)
+    public ResponseEntity<ErrorDto> handleBookingNoSuchAlgorithmException(HttpServletRequest request, BookingNoSuchAlgorithmException e) {
         return new ResponseEntity<>(buildError(request, "Error during MessageDigest getInstance: " + e.getMessage()),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }

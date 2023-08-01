@@ -1,4 +1,4 @@
-# avoristech
+# booking-demo
  Hexagonal and Messaging Demo project for Spring Boot
 
 
