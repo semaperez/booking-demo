@@ -20,12 +20,12 @@ public class JsonConverter {
             throw new BookingJsonProcessingException(e);
         }
     }
-    
+
     public <T> T convertToObject(String json, Class<T> valueType) {
-        try {
+       try {
             return objectMapper.readValue(json, valueType);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new BookingJsonProcessingException(e);
         }
     }
 }

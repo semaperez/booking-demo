@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AvailabilitySearchProducerPort {
-    void publish(SearchDto searchDto);
+    void send(SearchDto searchDto);
 }

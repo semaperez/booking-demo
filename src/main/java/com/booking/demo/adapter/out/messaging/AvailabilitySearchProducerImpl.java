@@ -21,7 +21,7 @@ public class AvailabilitySearchProducerImpl implements AvailabilitySearchProduce
     }
 
     @Override
-    public void publish(SearchDto searchDto) {
+    public void send(SearchDto searchDto) {
         String json = jsonConverter.convertToJson(searchDto);
         bookingProducer.send(getRecord(json));
     }

@@ -3,13 +3,13 @@ package com.booking.demo.adapter.out.db.model;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Search {
+public class SearchDocument {
     private String hotelId;
     private LocalDate checkIn;
     private LocalDate checkOut;
     private List<Integer> ages;
 
-    public Search(String hotelId, LocalDate checkIn, LocalDate checkOut, List<Integer> ages) {
+    public SearchDocument(String hotelId, LocalDate checkIn, LocalDate checkOut, List<Integer> ages) {
         this.hotelId = hotelId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;

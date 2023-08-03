@@ -8,13 +8,13 @@ public class AvailabilitySearchDocument {
     @Id
     private String id;
     private String searchId;
-    private Search search;
+    private SearchDocument searchDocument;
     private Integer count;
 
-    public AvailabilitySearchDocument(String id, String searchId, Search search, Integer count) {
+    public AvailabilitySearchDocument(String id, String searchId, SearchDocument searchDocument, Integer count) {
         this.id = id;
         this.searchId = searchId;
-        this.search = search;
+        this.searchDocument = searchDocument;
         this.count = count;
     }
 
@@ -37,12 +37,12 @@ public class AvailabilitySearchDocument {
         this.searchId = searchId;
     }
 
-    public Search getSearch() {
-        return search;
+    public SearchDocument getSearch() {
+        return searchDocument;
     }
 
-    public void setSearch(Search search) {
-        this.search = search;
+    public void setSearch(SearchDocument searchDocument) {
+        this.searchDocument = searchDocument;
     }
 
     public Integer getCount() {

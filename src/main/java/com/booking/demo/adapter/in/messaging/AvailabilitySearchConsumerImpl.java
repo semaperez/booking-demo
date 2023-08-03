@@ -41,6 +41,7 @@ public class AvailabilitySearchConsumerImpl implements AvailabilitySearchConsume
                     SearchDto searchDto = jsonConverter.convertToObject(r.value(), SearchDto.class);
                     availabilitySearchUseCases.persistSearch(searchDto);
                 });
+                bookingConsumer.commitSync();
             }
         }).start();
     }
