@@ -32,4 +32,16 @@ public class Search {
         return ages;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Search [");
+        sb.append("hotelId=").append(hotelId);
+        sb.append(", checkIn=").append(checkIn);
+        sb.append(", checkOut=").append(checkOut);
+        sb.append(", ages=").append(ages);
+        sb.append("]");
+        return sb.toString();
+    }
+
 }

@@ -14,7 +14,6 @@ public class HashGenerator {
         if (Objects.isNull(object)) {
             return null;
         }
-
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             String objectString = object.toString();
