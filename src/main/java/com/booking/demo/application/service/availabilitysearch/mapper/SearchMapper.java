@@ -10,4 +10,6 @@ public interface SearchMapper {
     SearchDocument toDocument(final SearchDto dto);
     SearchDocument toDocument(final Search domain);
     Search toDomain(final SearchDto dto);
+    Search toDomain(final SearchDocument document);
+    SearchDto toDto(final SearchDocument document);
 }

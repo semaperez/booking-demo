@@ -18,7 +18,7 @@ public class AvailabilitySearchConsumerImpl implements AvailabilitySearchConsume
     @Value("${kafka.topic.availabilitysearch}")
     private String availabilitySearchTopic;
     @Value("${kafka.consumer.poolTime}")
-    private Long poolTime;
+    protected Long poolTime;
     private final Consumer<String, String> bookingConsumer;
     private final JsonConverter jsonConverter;
     private final AvailabilitySearchUseCases availabilitySearchUseCases;

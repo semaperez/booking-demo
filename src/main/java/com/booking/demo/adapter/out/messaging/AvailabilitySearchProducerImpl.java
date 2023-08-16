@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AvailabilitySearchProducerImpl implements AvailabilitySearchProducerPort {
     @Value("${kafka.topic.availabilitysearch}")
-    private String availabilitySearchTopic;
+    protected String availabilitySearchTopic;
     private final Producer<String, String> bookingProducer;
     private final JsonConverter jsonConverter;
 
