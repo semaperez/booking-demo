@@ -7,5 +7,4 @@ kafka:
   topic:
     availabilitysearch: hotel_availability_searches
   consumer:
-    poolTime: 100
     groupId: booking

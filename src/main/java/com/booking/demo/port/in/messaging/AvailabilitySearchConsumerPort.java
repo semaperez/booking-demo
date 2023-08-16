@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AvailabilitySearchConsumerPort {
-    void startConsumer();
+    void listen(String message);
 }
