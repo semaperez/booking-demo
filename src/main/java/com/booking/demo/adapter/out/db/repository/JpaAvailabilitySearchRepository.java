@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface JpaAvailabilitySearchRepository extends MongoRepository<AvailabilitySearchDocument, String> {
     Optional<AvailabilitySearchDocument> findBySearchDocument(SearchDocument searchDocument);
     Optional<AvailabilitySearchDocument> findBySearchId(String searchId);
+    void deleteBySearchId(String searchId);
 }
